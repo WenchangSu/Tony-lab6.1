@@ -6,7 +6,7 @@ RSpec.describe Post, :type => :model do
 end
 =end
 
-=begin
+#=begin
 require 'rails_helper'
 RSpec.describe Post, type: :model do
 
@@ -23,8 +23,9 @@ expect(@post.title).to eq('My Title')
 end
 
 end
-=end
+#=end
 
+=begin
 require 'rails_helper'
 RSpec.describe Post, type: :controller do
 
@@ -45,3 +46,4 @@ pending "Your code here"
 end
 
 end
+=end
