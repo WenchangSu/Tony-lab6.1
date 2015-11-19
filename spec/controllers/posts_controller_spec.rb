@@ -20,7 +20,6 @@ RSpec.describe PostsController, :type => :controller do
       get :index
       expect(assigns(:posts)).to include(@post)
     end
-
   end
 
 
@@ -37,8 +36,26 @@ RSpec.describe PostsController, :type => :controller do
   end
 
 
+  context '#create' do
+    it "adds a new post " do
+      expect { post :create, {:post => valid_attributes}, valid_session }.to change(Post, :count).by(1)
+    end
+    it "creat a new post" do
+      post :create, {:post => valid_attributes}, valid_session
+      expect(response).to redirect_to(Post.last)
+    end
   end
 
+
+
+
+  context "#destroy" do
+    it "delete the text and redirects to the posts list" do
+      expect{delete :destroy, id: @post}.to change(Post, :count).by(-1)
+      expect(response).to redirect_to posts_path
+    end
+  end
+end
 
 =begin
 
